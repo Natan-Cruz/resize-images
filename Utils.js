@@ -16,7 +16,7 @@ function toInt(string) {
 
 function formatBytes(bytes) {
     var marker = 1024; // Change to 1000 if required
-    var decimal = 0; // Change as required
+    var decimal = 2; // Change as required
     var kiloBytes = marker; // One Kilobyte is 1024 bytes
     var megaBytes = marker * marker; // One MB is 1024 KB
     var gigaBytes = marker * marker * marker; // One GB is 1024 MB

@@ -28,6 +28,8 @@ router.get("/:filename", (req, res) => {
         config.quality = toInt(paramQuality)
     }
 
+    console.log(config)
+
     sharp(process.cwd() + "/images/" + filename)
         .resize(config.width, config.height)
         .jpeg({ progressive: true, force: false, quality: config.quality })
