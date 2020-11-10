@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Redimensionar images com Sharp</title>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Thambi+2:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
 
     <style>
+         :root {
+            --background: ##ececec;
+        }
+        
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Baloo Thambi 2', cursive, Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
         }
         
         header {
@@ -25,13 +29,17 @@
             margin-bottom: 24px;
         }
         
+        body {
+            background: var(--background);
+        }
+        
         main {
             width: 700px;
             margin: 0 auto;
         }
         
         .row {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border-bottom: dashed 1px #ccc;
         }
         
@@ -39,17 +47,29 @@
             font-size: 1.1em;
         }
         
+        .spacing {
+            margin-bottom: 10px;
+        }
+        
         .button-link {
             border: none;
             display: block;
             font-size: 1.3em;
             cursor: pointer;
-            background-color: #fff;
+            background-color: var(--background);
             color: #0000EE;
+            margin: 5px 0;
         }
         
         .button-link:hover {
             text-decoration: underline;
+        }
+        
+        .link-contribution {
+            font-size: 1.2em;
+            font-weight: bold;
+            position: fixed;
+            bottom: 0;
         }
     </style>
 </head>
@@ -60,30 +80,33 @@
     </header>
 
     <main>
-        <div class="row">
-            <p>A imagem original pesa cerca de 3.63mb com uma resolução de 3000x2000</p>
-            <p>Com essa solução é possivel tratar a imagem de acordo com seu uso e poupar uso de dados assim aumentanto a velocidade de carregamento</p>
-            <p>Há uma certo limite para essa solução, ao meu ver, ela é ideal para pequenos e médios sites cuja disparidades de resoluções de imagens é muito alta</p>
-        </div>
-        <div class="row">
-            <p>Imagem não redimesionada:</p>
-            <button class="button-link" onclick="download('/images/01.jpg')">http://localhost:<%= PORT %>/images/01.jpg</button>
-        </div>
-        <div class="row">
-            <p>Imagem redimesionada com "width" de 250px:</p>
-            <button class="button-link" onclick="download('/images/01.jpg?width=250')">http://localhost:<%= PORT %>/images/01.jpg?width=250</button>
-        </div>
-        <div class="row">
-            <p>Imagem redimesionada com "width" de 250px e qualidade de 70%:</p>
-            <button class="button-link" onclick="download('/images/01.jpg?width=250&quality=70')">http://localhost:<%= PORT %>/images/01.jpg?width=250&quality=70</button>
-        </div>
+        <p>
+            <div class="row">
+                <p class="spacing">A imagem original pesa cerca de 3.63mb com uma resolução de 3000x2000</p>
+                <p class="spacing">Com essa solução é possivel tratar a imagem de acordo com seu uso e poupar uso de dados assim aumentanto a velocidade de carregamento</p>
+                <p class="spacing">Há uma certo limite para essa solução sendo ideal para pequenos e médios sites cuja disparidades de resoluções de imagens é muito alta</p>
+            </div>
+            <div class="row">
+                <p>Imagem não redimesionada:</p>
+                <button class="button-link" onclick="download('/images/01.jpg')">http://localhost:<%= PORT %>/images/01.jpg</button>
+            </div>
+            <div class="row">
+                <p>Imagem redimesionada com "width" de 500px:</p>
+                <button class="button-link" onclick="download('/images/01.jpg?width=500')">http://localhost:<%= PORT %>/images/01.jpg?width=500</button>
+            </div>
+            <div class="row">
+                <p>Imagem redimesionada com "width" de 500px e qualidade de 70%:</p>
+                <button class="button-link" onclick="download('/images/01.jpg?width=500&quality=70')">http://localhost:<%= PORT %>/images/01.jpg?width=500&quality=70</button>
+            </div>
 
-        <h2>Memoria usada palo cache:
-            <%= cacheSize  %>
-        </h2>
-        <div class="row">
-            <p>Uma cópia de imagem tratada é armazena no cache, evitando o reprocessamento da mesma</p>
-        </div>
+            <h2 style="margin-bottom: 10px;">Memoria usada palo cache:
+                <%= cacheSize  %>
+            </h2>
+            <div class="row">
+                <p>Uma cópia de imagem tratada é armazena no cache em memoria, evitando o reprocessamento da mesma</p>
+            </div>
+
+            <p class="link-contribution">Imagem para o teste foi obtida: <a href="https://myphotopack.com/" target="_blank">https://myphotopack.com/</a></p>
     </main>
     <script>
         function download(link) {

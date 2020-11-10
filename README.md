@@ -6,20 +6,22 @@ Tabela de conteúdos
    * [Pre Requisitos](#pre-requisitos)
    * [Instalação](#instalacao)
    * [Tecnologias](#tecnologias)
+   * [Testes](#Testes)
   
-### Sobre
+### [Sobre](#sobre)
 Essa solução foi construida por mim com o objetivo de resolver um problema que tive no decorrer do meu projeto de delivery. Havia muitas imagens com diferentes tamanhos requiridos.
 O tamanho de uma foto de um produto no carriho é diferente que em visulização, então não havia necessidade uma imagem tão pesada sendo exibida em certos lugares.
 É uma solução que não requer pagamentos de serviços externos e funciona muito bem dentro dos limites.
 
 
-### Pré-requisitos
+### [Pré-requisitos](#Pré-requisitos)
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### 🎲 Rodando o Back End (servidor)
+## [Istalação](#istalacao)
+#### 🎲 Rodando o Back End (servidor)
 
 ```bash
 # Clone este repositório
@@ -37,9 +39,22 @@ $ npm run dev
 # O servidor inciará na porta:3000 - acesse <http://localhost:3000>
 ```
 
-### 🛠 Tecnologias
+### [ 🛠 Tecnologias](#tecnologias)
 
 As seguintes principais ferramentas foram usadas na construção do projeto:
 - [Node.js](https://nodejs.org/en/) - Backend
 - [Sharp](https://sharp.pixelplumbing.com/) - Lib para tratar a imagem
 - [node-cache](https://www.npmjs.com/package/node-cache) - Cache em memoria
+- [ejs](https://ejs.co/) - Visualização do index
+
+Para testes foi usado
+- [Jmater](https://jmeter.apache.org/) - "O aplicativo Apache JMeter™ é um software de código aberto, um aplicativo Java 100% puro projetado para carregar o comportamento funcional do teste e medir o desempenho. Foi originalmente projetado para testar aplicações web, mas desde então expandiu-se para outras funções de teste".
+
+### [Testes](#testes)
+Foram feitos testes de estresse com jmeter de requisições com duração de 10 segundos em cada setup: static files do express, sharp e shap + cache
+Os testes anteriores foram executados com o caso 1, caso 2 e caso 3 - os dois ultimos casos somente do sharp e shap+cache.
+
+Caso 1: Imagem original =~ 3,63mb - 3000x2000
+Caso 2: Imagem redimensionada =~ 63kb - 500x333
+Caso 3: Imagem redimensionada com 70% da qualidade =~ 34kb - 500x333
+![alt image](https://github.com/Natan-Cruz/resize-images-nodejs/blob/main/test/chart.jpg?raw=true)
