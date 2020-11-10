@@ -11,7 +11,6 @@ router.get("/:filename", (req, res) => {
         res.status(404).send();
 
     const { originalUrl } = req
-
     const imgCache = cache.has(originalUrl)
     if (imgCache) {
         const image = cache.get(originalUrl)
@@ -28,8 +27,6 @@ router.get("/:filename", (req, res) => {
         config.quality = toInt(paramQuality)
     }
 
-    console.log(config)
-
     sharp(process.cwd() + "/images/" + filename)
         .resize(config.width, config.height)
         .jpeg({ progressive: true, force: false, quality: config.quality })
@@ -41,6 +38,7 @@ router.get("/:filename", (req, res) => {
             res.send(data)
         })
         .catch(err => console.log(err))
+
 })
 
 module.exports = app => app.use("/images", router)

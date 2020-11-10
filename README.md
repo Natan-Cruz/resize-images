@@ -40,7 +40,6 @@ $ npm run dev
 ### 🛠 Tecnologias
 
 As seguintes principais ferramentas foram usadas na construção do projeto:
-
-- [Node.js](https://nodejs.org/en/)
-- [Sharp](https://sharp.pixelplumbing.com/)
-- [node-cache](https://www.npmjs.com/package/node-cache)
+- [Node.js](https://nodejs.org/en/) - Backend
+- [Sharp](https://sharp.pixelplumbing.com/) - Lib para tratar a imagem
+- [node-cache](https://www.npmjs.com/package/node-cache) - Cache em memoria
