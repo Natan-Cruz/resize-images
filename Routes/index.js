@@ -1,6 +1,6 @@
 const { Router } = require("express");
-const { formatBytes } = require("../Utils");
-const { cache } = require("../Cache");
+const { formatBytes } = require("../Utils/Utils");
+const { cache } = require("../Utils/Cache");
 
 const router = Router();
 

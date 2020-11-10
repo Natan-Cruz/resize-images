@@ -1,22 +1,27 @@
 const { Router } = require("express")
-const { toInt } = require('../Utils');
+const { toInt } = require('../Utils/Utils');
+const { cache } = require('../Utils/Cache');
 const sharp = require("sharp");
-const { cache } = require('../Cache');
 
-const router = Router()
+const router = Router();
 
 router.get("/:filename", (req, res) => {
     const { filename } = req.params;
     if (!filename)
         res.status(404).send();
 
-    const { originalUrl } = req
+    // Verifica se a imagem requisitada está no cache
+    const { originalUrl } = req;
     const imgCache = cache.has(originalUrl)
     if (imgCache) {
         const image = cache.get(originalUrl)
         return res.send(image)
     }
 
+    // Parametros para o tratamento da image
+    // ?width=xxx&height=yyy&quality=zzz (1-100)
+    // Caso forneça soment o "width", a alturaserá redimensionada automaticamente pelo sharp
+    // E caso forneça somente o "height", o mesmo ocorrerá
     const { width: paramWidth, height: paramHeight, quality: paramQuality } = req.query
     const config = {
         width: toInt(paramWidth) || null,
@@ -37,7 +42,11 @@ router.get("/:filename", (req, res) => {
             cache.set(originalUrl, data)
             res.send(data)
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            // Salvar em um log mais completo
+            console.log(err)
+            res.sendStatus(400);
+        })
 
 })
 

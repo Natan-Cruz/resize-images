@@ -10,8 +10,8 @@ Tabela de conteúdos
   
 ### [Sobre](#sobre)
 Essa solução foi construida por mim com o objetivo de resolver um problema que tive no decorrer do meu projeto de delivery. Havia muitas imagens com diferentes tamanhos requiridos.
-O tamanho de uma foto de um produto no carriho é diferente que em visulização, então não havia necessidade uma imagem tão pesada sendo exibida em certos lugares.
-É uma solução que não requer pagamentos de serviços externos e funciona muito bem dentro dos limites.
+A resolução de uma foto de um produto no carrinho é totalmete diferente das outras situaçoes como produto sendo visualizado, então não havia necessidade de entregar uma imagem "grande" para o uso "pequeno".
+Essa é uma solução que não requer pagamentos de serviços externos e funciona muito bem dentro de um certo limite.
 
 
 ### [Pré-requisitos](#Pré-requisitos)
@@ -54,7 +54,8 @@ Para testes foi usado
 Foram feitos testes de estresse com jmeter de requisições com duração de 10 segundos em cada setup: static files do express, sharp e shap + cache
 Os testes anteriores foram executados com o caso 1, caso 2 e caso 3 - os dois ultimos casos somente do sharp e shap+cache.
 
-Caso 1: Imagem original =~ 3,63mb - 3000x2000
-Caso 2: Imagem redimensionada =~ 63kb - 500x333
-Caso 3: Imagem redimensionada com 70% da qualidade =~ 34kb - 500x333
+- Caso 1: Imagem original, cerca de 3,63Mb - 3000x2000
+- Caso 2: Imagem redimensionada, cerca de 63Kb - 500x333
+- Caso 3: Imagem redimensionada com 70% da qualidade, cerca de 34Kb - 500x333
+
 ![alt image](https://github.com/Natan-Cruz/resize-images-nodejs/blob/main/test/chart.jpg?raw=true)

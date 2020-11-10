@@ -1,5 +1,4 @@
 const express = require('express');
-const { getDurationInMilliseconds } = require('./Utils')
 const ejs = require("ejs");
 
 const app = express();
